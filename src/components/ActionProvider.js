@@ -4,21 +4,31 @@ class ActionProvider {
     this.setState = setStateFunc;
   }
 
-  greet(){
-    const greetingMessage = this.createChatBotMessage('Hi, Friend!')
-    this.updateChatBotState(greetingMessage)
+  // new method
+  greet() {
+    const greetingMessage = this.createChatBotMessage("Hi, friend.");
+    this.updateChatbotState(greetingMessage);
   }
 
-  updateChatBotState(message){
-    //NOTE: This function is set in the constructor and is passed in
-    //from the top level chatbot component the setState function here
-    //actually manipulates the top level state of the chatbot so its
-    //important that we make sure that we preserve the previous state
-    this.setState(prevState => ({
-      ...prevState, messages: [...prevState.messages, message]
-    }))
-  }
+  handleJavascriptList = () => {
+    const message = this.createChatBotMessage(
+      "Fantastic, I've got the following resources for you on Javascript:",
+      {
+        widget: "javascriptLinks",
+      }
+    );
 
+    this.updateChatbotState(message);
+  };
+
+  updateChatbotState(message) {
+    // NOTICE: This function is set in the constructor, and is passed in from the top level Chatbot component. The setState function here actually manipulates the top level state of the Chatbot, so it's important that we make sure that we preserve the previous state.
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, message],
+    }));
+  }
 }
 
 export default ActionProvider;

@@ -1,10 +1,13 @@
 import React from "react";
-
 import "./LearningOptions.css";
 
 const LearningOptions = (props) => {
   const options = [
-    { text: "Javascript", handler: () => {}, id: 1 },
+    {
+      text: "Javascript",
+      handler: props.actionProvider.handleJavascriptList,
+      id: 1,
+    },
     { text: "Data visualization", handler: () => {}, id: 2 },
     { text: "APIs", handler: () => {}, id: 3 },
     { text: "Security", handler: () => {}, id: 4 },
